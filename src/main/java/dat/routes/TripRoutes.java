@@ -3,6 +3,7 @@ package dat.routes;
 import dat.config.Populate;
 import dat.controllers.impl.TripController;
 import dat.daos.TripDao;
+import dat.security.enums.Role;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -23,15 +24,15 @@ public class TripRoutes {
     protected EndpointGroup getRoutes() {
 
         return () -> {
-            post("/", tripController::create);
-            get("/", tripController::getAll);
-            get("/{id}", tripController::getById);
-            put("/{id}", tripController::update);
-            delete("/{id}", tripController::delete);
-            put("/{id}/guides/{guideId}", tripController::addGuide);
+            post("/", tripController::create, Role.ADMIN);
+            get("/", tripController::getAll, Role.ANYONE);
+            get("/{id}", tripController::getById, Role.ANYONE);
+            put("/{id}", tripController::update, Role.ADMIN);
+            delete("/{id}", tripController::delete, Role.ADMIN);
+            put("/{id}/guides/{guideId}", tripController::addGuide, Role.ADMIN);
             post("/populate", ctx -> {Populate.populateDatabase(emf);});
-            get("/category/{category}", tripController::filterByCategory);
-            get("/guide/totalPrice/{guideId}", tripController::totalPriceForGuidesTrips);
+            get("/category/{category}", tripController::filterByCategory, Role.ANYONE);
+            get("/guide/totalPrice/{guideId}", tripController::totalPriceForGuidesTrips, Role.ANYONE);
         };
     }
 }

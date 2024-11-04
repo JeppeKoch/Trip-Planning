@@ -1,8 +1,10 @@
 POST {{url}}/trips/populate
 ###
 GET {{url}}/trips/
+Authorization: Bearer {{jwt_token}}
 ###
 GET {{url}}/trips/1
+Authorization: Bearer {{jwt_token}}
 ###
 
 POST {{url}}/trips/
