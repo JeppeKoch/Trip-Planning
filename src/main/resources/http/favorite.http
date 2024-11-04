@@ -1,0 +1,31 @@
+GET {{url}}/users/
+###
+
+
+GET{{url}}/
+###
+GET {{url}}/users/1/favorites
+Authorization: Bearer {{jwt_token}}
+
+
+###
+POST {{url}}/
+###
+POST {{url}}/users/user1/favorites/spices/9
+Authorization: Bearer {{jwt_token}}
+
+###
+POST {{url}}/users/user1/favorites
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+
+{
+  "username": "hej",
+  "name": "abcde"
+}
+
+###
+POST {{url}}/users/user1/favorites/cuisines/2
+Authorization: Bearer {{jwt_token}}
+

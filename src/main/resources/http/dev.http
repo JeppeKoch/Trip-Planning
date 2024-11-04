@@ -1,0 +1,49 @@
+POST {{url}}/trips/populate
+###
+GET {{url}}/trips/
+###
+GET {{url}}/trips/1
+###
+
+POST {{url}}/trips/
+Content-Type: application/json
+
+{
+  "starttime": "09:00",
+  "endtime": "11:00",
+  "startposition": "City Center2",
+  "name": "Morning City Tour2",
+  "price": 49.99,
+  "category": "CITY",
+  "guide_id": 1
+}
+
+###
+POST {{url}}/trips/populate
+###
+PUT {{url}}/trips/1
+Content-Type: application/json
+
+{
+  "starttime": "09:00",
+  "endtime": "11:00",
+  "startposition": "updated City Center2",
+  "name": "updated Morning City Tour2",
+  "price": 49.99,
+  "category": "CITY"
+
+}
+
+###
+DELETE {{url}}/trips/8
+
+###
+
+PUT{{url}}/trips/7/guides/1
+
+###
+
+GET{{url}}/trips/category/BEACH
+
+###
+GET{{url}}/trips/guide/totalPrice/1
