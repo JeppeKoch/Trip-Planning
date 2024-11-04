@@ -1,3 +1,5 @@
+https://github.com/JeppeKoch/Trip-Planning
+
 ### Output from endpoints
 
 #### GET /api/trips/
